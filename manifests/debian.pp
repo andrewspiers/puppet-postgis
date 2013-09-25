@@ -13,7 +13,7 @@ class postgis::debian {
 
   exec {"create postgis_template":
     command => "/usr/local/bin/make-postgresql-postgis-template.sh",
-    unless  => "psql -l |grep template_postgis",
+    unless  => "/usr/bin/psql -l |grep template_postgis",
     user    => postgres,
     require => [ 
       Package["postgresql-${postgis::version}-postgis"],
