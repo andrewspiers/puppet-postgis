@@ -12,7 +12,7 @@ define postgis::database(
   $source=false, 
   $overwrite=false) {
 
-  postgresql::database{$name:
+  postgresql::server::db{$name:
     ensure => $ensure,
     owner => $owner,
     encoding => $encoding,
