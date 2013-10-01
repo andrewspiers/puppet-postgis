@@ -1,7 +1,7 @@
 class postgis::debian {
 
   include postgis::client
-  include postgresql::server
+  #include postgresql::server #duplicate declaration problems.
 
   file {"/usr/local/bin/make-postgresql-postgis-template.sh":
     ensure => present,
