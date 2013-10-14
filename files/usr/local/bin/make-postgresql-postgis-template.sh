@@ -32,7 +32,11 @@ test -e $PG_POSTGIS || exit 1
 test -e $PG_SPATIAL_REF || exit 1
 
 cat << EOF | psql -q
-CREATE DATABASE $TMPL_NAME WITH template = template1;
+-- CREATE DATABASE $TMPL_NAME WITH template = template1;
+-- crude hack to get around debian/ubuntu puppet postgis template issues
+-- ie http://projects.puppetlabs.com/issues/4695
+
+CREATE DATABASE $TMPL_NAME WITH template = template0 ENCODING = 'UTF8' LC_COLLATE='en_US.UTF-8' LC_CTYPE='en_US.UTF-8' ;
 UPDATE pg_database SET datistemplate = TRUE WHERE datname = '$TMPL_NAME';
 EOF
 
