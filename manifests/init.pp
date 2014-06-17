@@ -43,7 +43,7 @@ class postgis (
           'lucid': {
             validate_re($version, '^8\.4$', "version ${version} is not supported for ${::operatingsystem} ${::lsbdistcodename}!")
           }
-          /^(precise|quantal|raring|saucy)$/: {
+          /^(precise|quantal|raring|saucy|trusty)$/: {
             validate_re($version, '^9\.1$', "version ${version} is not supported for ${::operatingsystem} ${::lsbdistcodename}!")
           }
           default: { fail "${::operatingsystem} ${::lsbdistcodename} is not yet supported!" }
