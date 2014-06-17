@@ -46,6 +46,9 @@ class postgis (
           /^(precise|quantal|raring|saucy)$/: {
             validate_re($version, '^9\.1$', "version ${version} is not supported for ${::operatingsystem} ${::lsbdistcodename}!")
           }
+          'trusty': {
+            validate_re($version, '^9\.3$', "version ${version} is not supported for ${::operatingsystem} ${::lsbdistcodename}!")
+          }
           default: { fail "${::operatingsystem} ${::lsbdistcodename} is not yet supported!" }
         }
       }
